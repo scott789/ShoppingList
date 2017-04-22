@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root "list#index"
+  root "lists#index"
 
 end
