@@ -1,0 +1,44 @@
+<head>
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' %>
+  <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.1/jquery-ui.js' %>
+  <%= javascript_include_tag 'http://code.jquery.com/ui/1.9.2/jquery-ui.js' %>
+  <script>
+      $( function() {
+          $( "#sortable" ).sortable();
+          $( "#sortable" ).disableSelection();
+      } );
+  </script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <style>
+    #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+    #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+    #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+</head>
+
+<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <p>
+    <h1>
+    <%= @list.name %>
+    </h1>
+  </p>
+</div>
+
+  <ul id="sortable" style="margin-left: 250px;margin-top: 30px">
+    <%= render @list.items %>
+  </ul>
+  <div id="form">
+    <%= render "items/form" %>
+  </div>
+
+
+<div class="btn-group">
+  <button class="btn"><%= link_to 'Edit', edit_list_path(@list) %></button>
+  <button class="btn"><%= link_to 'Back', lists_path %></button>
+</div>
+

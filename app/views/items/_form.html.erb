@@ -1,0 +1,8 @@
+<div style="text-align:center">
+
+<%= form_for([@list, @list.items.build]) do |f| %>
+  <%= f.text_field :name, placeholder: "New item" %>
+  <%= f.submit %>
+<% end %>
+
+</div>

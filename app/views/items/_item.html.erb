@@ -1,0 +1,50 @@
+<div style="text-align:center">
+
+
+  <head>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' %>
+    <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.1/jquery-ui.js' %>
+    <%= javascript_include_tag 'http://code.jquery.com/ui/1.9.2/jquery-ui.js' %>
+    <script>
+        $( function() {
+            $( "#sortable" ).sortable();
+            $( "#sortable" ).disableSelection();
+        } );
+    </script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+      #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+      #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+      #sortable li span { position: absolute; margin-left: -1.3em; }
+    </style>
+  </head>
+
+  
+<div class="row clearfix">
+  <% if item.completed? %>
+      <div class="item">
+        <p style="opacity: 0.4;"><strike><%= item.name %></strike></p>
+      </div>
+    <div class="trash">
+      <%= link_to "Delete", list_item_path(@list, item.id), method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+      <hr/>
+  <% else %>
+      <div class="item">
+        <p><%= item.name %></p>
+      </div>
+    <div class="complete">
+      <%= link_to "Mark as Complete", complete_list_item_path(@list, item.id), method: :patch %>
+    </div>
+    <div class="trash">
+      <%= link_to "Delete", list_item_path(@list, item.id), method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+      <hr/>
+  <% end %>
+</div>
+
+</div>
